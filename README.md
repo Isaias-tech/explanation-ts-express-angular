@@ -86,11 +86,18 @@ En este pequeño ejemplo estaremos realizando una aplicación simple que muestre
 			"include": ["src/**/*"]
 		}
  - Luego en la carpeta donde hemos hecho toda la configuración generaremos otra carpeta llamada `src` donde estara almacenado todo nuestro codigo.
- - Dentro de la carpeta `src` crearemos un archivo llamado `index.ts` el cual sera la fuente de ejecución de nuestro projecto
+ - Dentro de la carpeta `src` crearemos un archivo llamado `index.ts` el cual sera la fuente de ejecución de nuestro projecto.
+ - Para poder ejecutar el projecto tambien necesitamos agregar dos scripts a el archivo `package.json`, los cuales son:
+	- **dev:** `"start": "npx nodemon --watch ./src ./src/index.ts"` este se utiliza para ejecutar el entorno de desarrollo de la aplicación.
+    - **build:** `"build": "npx tsc"` este se utiliza para compliar la aplicación.
+ - Ahora vamos a escribir codigo dentro del archivo `index.ts`:
+   - Primero tenemos que importar la libreria de **Express** para ello escribimos lo siguiente `import express from "express";`.
+   - Ahora para crear la aplicación escribimos `const app = express();`.
+   - Luego para formar una ruta inicial escribimos `app.get('/', (req, res) => { res.send("Hello world!"); });` 
+   - Y para finalmente iniciar el servidor escribimos `app.listen(3000, () => { console.log('Ejemplo de la aplicación escuchando en el puerto 3000.'); })` este comando iniciara la aplicación e imprimira por la consola el puerto en el que se esta ejecutando.
+   - En este punto podremos ejecutar la aplicación ejecutando `npm start` en el terminal.
 
 #### Conectando el app con MySQL
-
-## Herramientas utiles para el desarrollo frontend con angular
 
 ## Angular
 ---
@@ -104,14 +111,14 @@ En este pequeño ejemplo estaremos realizando una aplicación simple que muestre
 # Recursos utiles
 
 [Angular](https://angular.io/) 
-[NodeJS](https://nodejs.org/en) 
-[Express](https://expressjs.com/) 
-[TypeScript](https://www.typescriptlang.org/) 
-[npm](https://www.npmjs.com/) 
-[Road Map](https://roadmap.sh/) 
-[Chart.js](https://www.chartjs.org/) 
-[Angular powered bootstrap](https://ng-bootstrap.github.io/#/home) 
-[W3Schools](https://www.w3schools.com/) 
-[SCSS](https://sass-lang.com/) 
-[Nodemon](https://nodemon.io/) 
-[EnmaScript](https://enmascript.com/) 
+[NodeJS](https://nodejs.org/en)
+[Express](https://expressjs.com/)
+[TypeScript](https://www.typescriptlang.org/)
+[npm](https://www.npmjs.com/)
+[Road Map](https://roadmap.sh/)
+[Chart.js](https://www.chartjs.org/)
+[Angular powered bootstrap](https://ng-bootstrap.github.io/#/home)
+[W3Schools](https://www.w3schools.com/)
+[SCSS](https://sass-lang.com/)
+[Nodemon](https://nodemon.io/)
+[EnmaScript](https://enmascript.com/)
