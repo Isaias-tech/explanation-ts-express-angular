@@ -67,13 +67,13 @@ Para esto primero tenemos que configurar un entorno de **Node.js** para hacer es
 ### Pequeño ejemplo con express
 
 En este pequeño ejemplo estaremos realizando una aplicación simple que muestre en el navegador la frase **Hola mundo!**, para ello debemos seguir estos pasos:
- - Instalaremos una dependencia mas aparte de **Express** la cual es **dotenv** que sirve para el manejo de variables de entorno. Estas son dependencias de la aplicación.
+ - Instalaremos una dependencia mas aparte de **Express** la cual es **dotenv** que sirve para el manejo de variables de entorno esta se instala con el siguiente codigo `npm install dotenv`. Estas son dependencias de la aplicación.
  - Luego instalaremos unas cuantas dependencias de desarrollo que no seran aplicadas a la aplicación final luego de ser compilada para esto ejecutaremos el siguiente comando en el terminal `npm install --save-dev nodemon ts-node typescript @types/express @types/node`. Las cuales sirven para:
    - **Nodemon:** Nodemon es una utilidad de la que dependen cerca de 3 millones de proyectos, que monitorizará cualquier cambio en tu fuente y reiniciará automáticamente tu servidor. Perfecto para el desarrollo. 
    - **ts-node:** It JIT o Just In Time (Justo A Tiempo) transforma TypeScript en JavaScript, permitiéndole ejecutar directamente TypeScript en Node.js sin precompilación.
    - **TypeScript:** Permite compilar codigo de TypeScript a JavaScript.
    - **@types:** Estos son tipos de typescript para la ayuda del desarrollo de aplicaciones.
- - Luego ejecutaremos el commando `npx tsc init` el cual iniciara un espacio de trabajo con typescript, esto lo hara generando un archivo llamado `tsconfig.json` el cual tendra diferentes configuraciones dentro del mismo en este caso solo nos enfocaremos en las siguientes:
+ - Luego ejecutaremos el commando `npx tsc --init` el cual iniciara un espacio de trabajo con typescript, esto lo hara generando un archivo llamado `tsconfig.json` el cual tendra diferentes configuraciones dentro del mismo en este caso solo nos enfocaremos en las siguientes:
     >	{
 			"compilerOptions": {
 				"target": "ES2020",
@@ -99,12 +99,24 @@ En este pequeño ejemplo estaremos realizando una aplicación simple que muestre
 
 #### Conectando el app con MySQL
 
+npm install --save mysql
+npm install --save-dev @types/mysql
+
 ## Angular
 ---
+> ***Angular** es un marco de diseño de aplicaciones y una plataforma de desarrollo para crear aplicaciones de una sola página eficaces y sofisticadas.*
 
 ### Como instalarlo
 
+Instalar **Angular** es simple solo hay que ejecutar el siguiente comando `npm install -g @angular/cli` aunque si es posible que se genere un error por problemas de instalación de **NodeJS** de ser este el caso simplemente se ejecuta el instalador de **NodeJS** y se selecciona la opción de reparar.
+
+Luego de tener el **CLI** (Comand Line Interface) de **Angular** el sistema tendra el comando de ejecución **ng** para probar que no hay ningun problema de instalación se puede ejecutar `ng version` si no hay problema al ejecutarlo aparecera la versión instalada en el sistema.
+
 ### Configuracion de angular
+
+En este caso se estara trabajando dentro de una carpeta llamada `frontend`, abrimos un terminal en la carpeta de `frontend` y en ella ejecutamos `ng new app_name --directory ./` este comando generara una nueva aplicación llamada `app_name` y estara ubicada en el directorio `frontend` o en el que este ubicada el terminal. Durante la ejecución solicitar datos como si se quiere agregar el **Angular routing** que sirve para las rutas en **Angular** y tambien cual procesador de estilos prefiere, recomiendo utilizar `scss` ya que este permite hacer mas cosas que el `css` sin cambiar mucho la sintaxys.
+
+Al terminar tendriamos la aplicación lista y podemos iniciarla con los comandos `npm start` o `ng serve`. Ambos realizan la misma acción.
 
 ### Conectar angular con el backend
 
