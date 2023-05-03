@@ -97,10 +97,40 @@ En este pequeño ejemplo estaremos realizando una aplicación simple que muestre
    - Y para finalmente iniciar el servidor escribimos `app.listen(3000, () => { console.log('Ejemplo de la aplicación escuchando en el puerto 3000.'); })` este comando iniciara la aplicación e imprimira por la consola el puerto en el que se esta ejecutando.
    - En este punto podremos ejecutar la aplicación ejecutando `npm start` en el terminal.
 
-#### Conectando el app con MySQL
+Ahora agregaremos diferentes rutas o urls y a estas le pondremos los elementos basicos como ejemplo, aunque no estara interactuando con una base de datos, servira como ejemplo para explicar como **Express** maneja las rutas. Para esto seguiremos estos pasos:
+ - Primero crearemos 2 carpetas una llamada `controllers` y otra llamada `routes`, estas para ubicar los controladores y las rutas que seran explicadas en breve.
+ - Luego en la carpeta de controladores agregamos el siguiente codigo:
 
-npm install --save mysql
-npm install --save-dev @types/mysql
+> import { Request, Response } from "express"
+export const getUser = (req: Request, res: Response) => {
+	res.json({"Leer": "Este es un usuario"});
+};
+export const updateUser = (req: Request, res: Response) => {
+	res.json({"actualizar": {id: req.params, data: req.body}});
+};
+export const createUser = (req: Request, res: Response) => {
+	res.json({"Crear": req.body});
+};
+export const deleteUser = (req: Request, res: Response) => {
+	res.json({"Eliminar": req.params});
+};
+
+ - Luego en la carpeta de rutas agregamos el siguiente codigo:
+> import express from "express";
+import * as userControllers from '../controllers/user.controllers';
+const userRouter = express.Router();
+userRouter.get("/user/", userControllers.getUser);
+userRouter.post("/user/", userControllers.createUser);
+userRouter.patch("/user/:id", userControllers.updateUser);
+userRouter.delete("/user/:id", userControllers.deleteUser);
+export default userRouter;
+
+ - Para finalizar agregamos el siguiente codigo al archivo `index.ts`:
+>server routes
+app.use("/", userRouter);
+app.use("/", (req: Request, res: Response) => {
+	res.send("Hola mundo!");
+})
 
 ## Angular
 ---
@@ -118,8 +148,6 @@ En este caso se estara trabajando dentro de una carpeta llamada `frontend`, abri
 
 Al terminar tendriamos la aplicación lista y podemos iniciarla con los comandos `npm start` o `ng serve`. Ambos realizan la misma acción.
 
-### Conectar angular con el backend
-
 # Recursos utiles
 
 [Angular](https://angular.io/) 
@@ -134,3 +162,6 @@ Al terminar tendriamos la aplicación lista y podemos iniciarla con los comandos
 [SCSS](https://sass-lang.com/)
 [Nodemon](https://nodemon.io/)
 [EnmaScript](https://enmascript.com/)
+[ThunderClient](https://www.thunderclient.com/)
+[Postman](https://www.postman.com/)
+[Insomnia](https://insomnia.rest/)
